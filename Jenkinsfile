@@ -11,11 +11,11 @@ pipeline {
    steps {
     sh "chmod u+x mvnw"   
     sh "./mvnw test"
-    //publishHTML (target: [
-    //    reportDir: 'target/jacoco-report',
-    //    reportFiles: 'index.html',
-    //    reportName: "JaCoCo Report"
-    //])    
+   }
+   post {
+        always {
+            junit '**/target/surefire-reports/TEST-*.xml'
+        }
    }
   }
   stage("Code coverage") {
