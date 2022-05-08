@@ -16,9 +16,9 @@ pipeline {
   stage("Code coverage") {
    steps {
     sh "chmod u+x mvnw"     
-    sh "./mvnw test"
+    sh "./mvnw verify"
     publishHTML (target: [
-        reportDir: '/var/jenkins_home/jobs/calculator/htmlreports/JaCoCo_20Report',
+        reportDir: 'target/jacoco-report',
         reportFiles: 'index.html',
         reportName: "JaCoCo Report"
     ])    
