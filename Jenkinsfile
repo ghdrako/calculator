@@ -22,7 +22,6 @@ pipeline {
    steps {
     sh "chmod u+x mvnw"     
     sh "./mvnw verify"
-    
    }
   }
  }
