@@ -23,7 +23,9 @@ pipeline {
        
     sh "chmod u+x mvnw"    
     sh "./mvnw jacoco:report-aggregate" 
-    post {
+    sh "./mvnw verify"
+   }
+   post {
             always {
                 // Requires HTMLPublisher plugin in Jenkins instance.
                 publishHTML(target: [
@@ -32,9 +34,7 @@ pipeline {
                         reportName : 'Coverage Report - Unit Tests'
                 ])
             }
-         }
-    sh "./mvnw verify"
-   }
+    }
   }
  }
 }
