@@ -40,12 +40,12 @@ pipeline {
    //             ])
    //         }
    // }
-  stage("Static code analysis") {
-   steps {
+    stage("Static code analysis") {
+     steps {
       sh "chmod u+x mvnw"
       sh "./mvnw checkstyle:checkstyle-aggregate"  
       sh "./mvnw checkstyle:check"
-   }
+     }
+    }
   }
- }
 }
