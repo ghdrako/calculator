@@ -19,22 +19,33 @@ pipeline {
    }
   }
   stage("Code coverage") {
-   steps {
-       
+   steps {  
     sh "chmod u+x mvnw"    
     sh "./mvnw jacoco:report-aggregate" 
-    sh "./mvnw verify"
-   }
-   post {
-            always {
-                // Requires HTMLPublisher plugin in Jenkins instance.
-                publishHTML(target: [
+    publishHTML(target: [
                         reportDir  : '**/target/site/jacoco-aggregate',
                         reportFiles: 'index.html',
                         reportName : 'Coverage Report - Unit Tests'
                 ])
-            }
-    }
+    sh "./mvnw verify"
+   }
+  } 
+   //post {
+   //         always {
+                // Requires HTMLPublisher plugin in Jenkins instance.
+   //             publishHTML(target: [
+   //                     reportDir  : '**/target/site/jacoco-aggregate',
+   //                     reportFiles: 'index.html',
+   //                     reportName : 'Coverage Report - Unit Tests'
+   //             ])
+   //         }
+   // }
+  stage("Static code analysis") {
+   steps {
+      sh "chmod u+x mvnw"
+      sh "./mvnw checkstyle:checkstyle-aggregate"  
+      sh "./mvnw checkstyle:check"
+   }
   }
  }
 }
