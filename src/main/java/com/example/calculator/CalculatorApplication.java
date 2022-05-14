@@ -22,5 +22,9 @@ public class CalculatorApplication {
     }
     private void run(final String[] args) {
         SpringApplication.run(CalculatorApplication.class, args);
+        //new CalculatorApplication.run(args);
     }
+    //private void run(final String[] args) {
+    //    SpringApplication.run(CalculatorApplication.class, args);
+    //}
 }
