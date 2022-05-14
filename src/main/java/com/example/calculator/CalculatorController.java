@@ -20,8 +20,8 @@ class CalculatorController {
 * @return     a result of sum od two operaands
  */
  @RequestMapping("/sum")
- String sum(final @RequestParam("a") Integer a,
- final @RequestParam("b") Integer b) {
+ String sum(@RequestParam("a") Integer a,
+  @RequestParam("b") Integer b) {
   return String.valueOf(calculator.sum(a, b));
  }
 }

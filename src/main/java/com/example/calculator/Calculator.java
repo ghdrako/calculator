@@ -12,7 +12,7 @@ public final class Calculator {
 * @param  b  a second operand
 * @return     a result of sum od two operaands
  */
- public int sum(final int a, final int b) {
+ public int sum(final int a,  final int b) {
  return a + b;
  }
 }
