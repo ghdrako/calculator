@@ -10,11 +10,13 @@ public class CalculatorApplication {
     //private CalculatorApplication() {
        //not called
     //}
+
     /**
        * Method add two operands.
        * @param  args  args
     */
     public static void main(final String[] args) {
+
         //SpringApplication.run(CalculatorApplication.class, args);
         new CalculatorApplication.run(args);
     }
