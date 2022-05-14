@@ -4,7 +4,7 @@ pipeline {
   stage("Compile") {
    steps {
     sh "chmod u+x mvnw"
-    sh "./mvnw compile"
+    sh "./mvnw clean compile"
    }
   }
   stage("Unit test") {
