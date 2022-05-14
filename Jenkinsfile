@@ -49,8 +49,20 @@ pipeline {
                         reportFiles: 'main.html',
                         reportName: "Checkstyle Report"
       ])      
-      sh "./mvnw checkstyle:check"
+      //sh "./mvnw checkstyle:check"
      }
     }
+    stage("Package") {
+     steps {
+      sh "chmod u+x mvnw" 
+      sh "./mvnw package"
+     }
+    }
+    stage("Docker build") {
+     steps {
+      sh "docker build -t akdevops/calculator ."
+     }
+    } 
+
   }
 }
